@@ -1,0 +1,5 @@
+package com.time.repository;
+
+public class AccountPK {
+
+}

@@ -1,0 +1,9 @@
+package com.onetoone.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.onetoone.entity.FlatOwner;
+
+public interface FlatOwnerRepository extends JpaRepository<FlatOwner, Integer>{
+
+}

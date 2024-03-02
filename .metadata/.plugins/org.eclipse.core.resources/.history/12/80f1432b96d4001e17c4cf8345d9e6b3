@@ -1,0 +1,45 @@
+package com.onetoone.service;
+
+import com.onetoone.repository.FlatOwnerRepository;
+import com.onetoone.repository.ParkingSporRepository;
+
+import java.util.Arrays;
+
+import com.onetoone.entity.*;
+
+@org.springframework.stereotype.Service
+public class Service {
+	
+	private FlatOwnerRepository fr; 
+	private ParkingSporRepository psr;
+	public Service( FlatOwnerRepository fr,ParkingSporRepository psr) {
+		super();
+		this.fr = fr;
+		this.psr =psr;
+	}
+	public void saveDate() {
+		ParkingSpot ps1 = new ParkingSpot();
+		ps1.setId(101);
+		ps1.setLevel(1);
+		
+		ParkingSpot ps2 = new ParkingSpot();
+		ps2.setId(102);
+		ps2.setLevel(2);
+		
+		ParkingSpot ps3 = new ParkingSpot();
+		ps3.setId(103);
+		ps3.setLevel(3);
+		
+		psr.saveAll(Arrays.asList(ps1,ps2,ps3));
+		
+		FlatOwner f1 =new FlatOwner();
+		f1.setFlatNo(201);
+		f1.setFloorNo(11);
+		f1.setParkinspot(ps3);
+		
+		
+		
+	}
+	
+
+}

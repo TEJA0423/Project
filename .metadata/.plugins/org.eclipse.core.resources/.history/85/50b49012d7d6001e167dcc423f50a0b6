@@ -1,0 +1,21 @@
+package com.irct.service;
+
+import java.util.List;
+import java.util.Map;
+
+import com.irct.entity.IRCTC;
+
+public interface IRCTCService {
+	public String addIRCTC(IRCTC irctc);
+
+	public IRCTC getIRCTCById(Integer id);
+
+	List<IRCTC> getAllIRCTCById(Long length);
+
+	IRCTC updateIRCTC(IRCTC irctc, Integer id);
+
+	IRCTC updateIRCTCByfield(Map<String, Object> fields, Integer id);
+	
+	public void deleteIRCTC(Integer id);
+
+}

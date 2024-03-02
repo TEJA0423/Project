@@ -1,0 +1,25 @@
+package com.onetoone.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
+@Entity
+@Data
+@Table(name="Flat_Owners")
+public class FlatOwner {
+	@Id
+	@Column(name="Flat_No")
+	private Integer FlatNo;
+	
+	@Column(name="Floor_No")
+	private Integer FloorNo;
+	
+	@OneToOne
+	@JoinColumn(name="parkspot_id")
+	private ParkingSpot parkinspot;
+
+}

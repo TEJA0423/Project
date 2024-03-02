@@ -1,0 +1,19 @@
+package com.rest.service;
+
+import java.util.List;
+import java.util.Map;
+
+import com.rest.entity.Student;
+
+public interface StudentService {
+  public String addStudent(Student student);
+  
+  public Integer getStudentById(Integer id);
+  
+  List<Student> getAllStudentById(Long length);
+  
+  Student updateStudent(Student student, Integer id);
+  Student updateStudentByfield(Map<String, Object>fields, Integer id);
+ 
+  public String deleteStudent(Integer id);
+}

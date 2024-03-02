@@ -1,0 +1,5 @@
+package com.teja.repository;
+
+public interface EmployeeRepository {
+
+}

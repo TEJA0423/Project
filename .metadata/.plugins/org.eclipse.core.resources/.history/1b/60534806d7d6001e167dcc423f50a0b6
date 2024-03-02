@@ -1,0 +1,70 @@
+package com.irct.service;
+
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.ReflectionUtils;
+
+import com.irct.entity.IRCTC;
+import com.irct.repository.IRCTCRepository;
+
+
+public class IRCTCServiceImp implements IRCTCService{
+	@Autowired
+  public IRCTCRepository ircrep;
+	@Override
+	public String addIRCTC(IRCTC irctc) {
+		IRCTC irc = ircrep.save(irctc);
+		if (irc.getId() != null) {
+			return "IRCTC Id created";
+		} else {
+			return "IRCTC Id not created";
+		}
+	}
+
+	@Override
+	public IRCTC getIRCTCById(Integer id) {
+		return ircrep.findById(id).orElseThrow(() -> new IllegalAccessError("IRCTC Record not created"));
+	}
+
+	@Override
+	public List<IRCTC> getAllIRCTCById(Long length) {
+		
+		return ircrep.findAll();
+	}
+
+	@Override
+	public IRCTC updateIRCTC(IRCTC irctc, Integer id) {
+		IRCTC irctc1 = ircrep.findById(id).get();
+		irctc1.setName(irctc.getName());
+		irctc1.setMailId(irctc.getMailId());
+		return ircrep.save(irctc1);
+		
+	}
+
+	@Override
+	public IRCTC updateIRCTCByfield(Map<String, Object> fields, Integer id) {
+		Optional<IRCTC> existingstudent = ircrep.findById(id);
+		if (existingstudent.isPresent()) {
+			fields.forEach((key, value) -> {
+				Field field = ReflectionUtils.findRequiredField(IRCTC.class, key);
+				field.setAccessible(true);
+				ReflectionUtils.setField(field, existingstudent, value);
+			});
+
+			return ircrep.save(existingstudent.get());
+		}
+		return null;
+	}
+
+	@Override
+	public void deleteIRCTC(Integer id) {
+		ircrep.deleteById(id);
+		
+	}
+
+	
+}

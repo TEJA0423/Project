@@ -1,0 +1,9 @@
+package com.onetoone.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.onetoone.entity.ParkingSpot;
+
+public interface ParkingSporRepository extends JpaRepository<ParkingSpot, Integer>{
+
+}

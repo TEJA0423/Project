@@ -1,0 +1,15 @@
+spring:
+     datasource:
+		drive-calss-name: com.mysql.jdbc.Driver
+		password:teju2304
+		url=jdbc:mysql://localhost:3306/EmployeesInfo
+		usename:root
+
+jpa:
+    hibernate:
+      ddl-auto: update
+  show-sql: true
+mvc:
+    patchmatch:
+       matching-strategy: ant-path-matcher
+

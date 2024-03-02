@@ -1,0 +1,12 @@
+package com.emp.exception;
+
+import com.irct.exception.ExceptionBean;
+
+import lombok.Data;
+
+@Data
+public class ExceptionBean {
+	
+	private String code;
+	private String msg;
+}

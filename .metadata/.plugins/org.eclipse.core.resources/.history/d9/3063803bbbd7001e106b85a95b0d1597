@@ -1,0 +1,11 @@
+package com.irct.exception;
+import com.rest.exception.ExceptionBean;
+
+import lombok.Data;
+
+@Data
+public class ExceptionBean {
+	
+	private String code;
+	private String msg;
+}

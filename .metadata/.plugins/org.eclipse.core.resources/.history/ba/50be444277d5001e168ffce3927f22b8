@@ -1,0 +1,6 @@
+package com.rest.service;
+
+public class StudentService {
+	public String addStudent()
+
+}

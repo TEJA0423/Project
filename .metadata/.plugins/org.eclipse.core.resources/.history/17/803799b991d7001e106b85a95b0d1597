@@ -1,0 +1,75 @@
+package com.emp.service;
+
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.ReflectionUtils;
+import org.springframework.stereotype.Service;
+
+import com.emp.entity.Employee;
+import com.emp.repository.EmployeeRepository;
+import com.irct.entity.IRCTC;
+import com.irct.repository.IRCTCRepository;
+
+@Service
+public class EmployeeServiceImp implements EmployeeService{
+	@Autowired
+	  public EmployeeRepository emprepository;
+		@Override
+		public String addEmployee(Employee employee) {
+			Employee emp = emprepository.save(employee);
+			if (emp.getId() != null) {
+				return "IRCTC Id created";
+			} else {
+				return "IRCTC Id not created";
+			}
+		}
+
+		@Override
+		public Employee getEmployeeById(Integer id) {
+			return emprepository.findById(id).orElseThrow(() -> new IllegalAccessError("Employee Record not created"));
+		}
+
+		@Override
+		public List<Employee> getAllEmployeeById(Long length) {
+			
+			return emprepository.findAll();
+		}
+
+		@Override
+		public Employee updateEmployeeById(Employee employee, Integer id) {
+			Employee empl = emprepository.findById(id).get();
+			empl.setId(empl.getId());
+			empl.setName(empl.getName());
+			empl.setGender(empl.getGender());
+			empl.setYear(empl.getYear());
+			return emprepository.save(empl);		
+		}
+		
+		@Override
+		public Employee updateEmployeeByfields(Map<String, Object> fields, Integer id) {
+			Optional<Employee> existingstudent = emprepository.findById(id);
+			if (existingstudent.isPresent()) {
+				fields.forEach((key, value) -> {
+					Field field = ReflectionUtils.findRequiredField(Employee.class, key);
+					field.setAccessible(true);
+					ReflectionUtils.setField(field, existingstudent, value);
+				});
+
+				return emprepository.save(existingstudent.get());
+			}
+			return null;
+		}
+
+		@Override
+		public String deleteEmployee(Integer id) {
+			emprepository.deleteById(id);
+			return "Employeed deleted Successfully";
+			
+		}
+
+
+}

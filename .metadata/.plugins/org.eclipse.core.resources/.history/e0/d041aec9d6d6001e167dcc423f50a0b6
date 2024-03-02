@@ -1,0 +1,13 @@
+package com.irct;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class IrctcRestApiExampleApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(IrctcRestApiExampleApplication.class, args);
+	}
+
+}

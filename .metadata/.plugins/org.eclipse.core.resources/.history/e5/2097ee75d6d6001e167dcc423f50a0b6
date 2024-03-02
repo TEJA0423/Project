@@ -1,0 +1,22 @@
+
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    password: teju2304
+#    url: jdbc:mysql://localhost:3306/IRCTCRestApi
+#    username: root
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#  mvc:
+#    pathmatch:
+#      matching-strategy: ant-path-matcher
+
+spring.datasource.url=jdbc:mysql://localhost:3306/studentDetails
+spring.datasource.username=root
+spring.datasource.password=teju2304
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
